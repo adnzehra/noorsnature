@@ -25,5 +25,11 @@ document.getElementById("checkout-button").addEventListener("click", function() 
     }
 });
 
+function addToCart(productName, price, imgSrc) {
+    cart.push({ name: productName, price, img: imgSrc });
+    localStorage.setItem('cart', JSON.stringify(cart)); // save cart persistently
+    updateCartUI();
+    showCartMessage();
+}
 
 
