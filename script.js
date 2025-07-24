@@ -1,3 +1,5 @@
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
 function showCartMessage() {
   const message = document.getElementById("cart-message");
   message.style.display = "block";
