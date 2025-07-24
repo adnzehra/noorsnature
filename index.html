@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noor's Nature</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+ <!-- Header / Navigation Bar -->
+<header>
+  <div class="header-container centered">
+    <img src="images/logo.png" alt="Noor's Nature Logo" class="logo" />
+    <nav>
+      <a href="#skincare">Skincare</a>
+      <a href="#haircare">Haircare</a>
+
+      <a href="#custom">Customized</a>
+      
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- Reviews Section -->
+<section id="reviews">
+  <h2>What Our Customers Say</h2>
+
+  <div class="review-container">
+    <div class="review">
+      <img src="images/oil.png" alt="Oil and Shampoo Reviews" onclick="openLightbox(this)" />
+      <h4>- Oil and Shampoo Reviews</h4>
+    </div>
+
+    <div class="review">
+      <img src="images/KH.jpg" alt="Review by Kaneez Hafsa" onclick="openLightbox(this)" />
+      <h4>- Kaneez Hafsa, Karachi</h4>
+    </div>
+
+    <div class="review">
+      <img src="images/review3.png" alt="Review by Aiman" onclick="openLightbox(this)" />
+      <h4>- Aiman Arsalan</h4>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Zoomed review" />
+</div>
+
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <h2>Affordable Herbal Skincare for Everyone</h2>
+    <p>Handmade | Ayurvedic | Loved by All</p>
+  </section>
+
+  <!-- Skincare Section -->
+<section id="skincare">
+  <h2>Skincare Products</h2>
+  
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="images/skincare1.jpg" alt="Glow Serum">
+      <h3>Glow Serum</h3>
+      <p>Gentle, refreshing, made up of collagen and white rice.</p>
+      <span class="price">Rs. 400</span>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/skincare2.jpg" alt="Microbead facewash">
+      <h3>Microbead facewash</h3>
+      <p>Gently exfoliate and purify your skin with our microbead facewash, revealing a smoother, brighter complexion</p>
+      <span class="price">Rs. 300</span>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/skincare3.jpg" alt="24K Gold Facewash">
+      <h3>24K Gold Facewash</h3>
+      <p>Indulge in luxurious skincare with our 24K gold-infused facewash, illuminating your complexion and leaving your skin radiant and revitalized.</p>
+      <span class="price">Rs. 300</span>
+      <button>Add to Cart</button>
+    </div>
+ 
+
+<div class="product-card">
+  <img src="images/skincare4.jpg" alt="Rose Care Facewash">
+  <h3>Rose Care Facewash</h3>
+  <p>Pure rose extract to refresh and tighten your pores naturally.</p>
+  <span class="price">Rs. 300</span>
+  <button>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="images/skincare5.jpg" alt="3-in-1 Tinted Sunscreen">
+  <h3> 3-in-1 Tinted Sunscreen</h3>
+  <p>Double up on protection and perfection with our tinted sunscreen BB cream, blending broad-spectrum SPF with buildable coverage for a flawless, sun-kissed glow</p>
+  <span class="price">Rs. 700</span>
+  <button>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="images/scrub.jpg" alt="Exfoliating Scrub">
+  <h3>Exfoliating Scrub</h3>
+  <p>Wake up to radiant skin with our invigorating scrubs: choose Coffee for a energizing boost or Strawberry for a sweet, gentle glow.</p>
+  
+  <!-- Option selector -->
+  <label for="scrub-type">Type:</label>
+  <select id="scrub-type">
+    <option value="coffee">Coffee</option>
+    <option value="strawberry">Strawberry</option>
+  </select>
+
+  <span class="price">Rs. 350</span>
+  <button>Add to Cart</button>
+</div>
+
+<div class="product-card">
+  <img src="images/lotion.jpg" alt="Almond and Shea butter lotion">
+  <h3>Almond and Shea butter lotion</h3>
+  <p>Nourish your skin with the gentle goodness of Almond and the rich moisturizing power of Shea Butter in our lotion, leaving your skin soft, supple, and radiant</p>
+  <span class="price">Rs. 350</span>
+  <button>Add to Cart</button>
+</div>
+
+ </div>
+</section>
+
+
+<!-- Haircare Section -->
+<section id="haircare">
+  <h2>Haircare Products</h2>
+
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="images/oil.jpg" alt="Herbal Hair Oil">
+      <h3>Herbal Hair Oil</h3>
+      <p>Strengthens roots with 25+ herbs healthy hair growth.</p>
+      <span class="price">Rs. 500</span>
+      <button>Add to Cart</button>
+    </div>
+
+<div class="product-card">
+  <img src="images/shampoo.jpg" alt="Herbal Shampoo">
+  <h3>Herbal Shampoo</h3>
+  <p>Nourish your locks with nature's best: our herbal shampoo gently cleanses and revitalizes your hair, promoting healthy growth and a vibrant shine. Made up of 30+ herbs</p>
+
+  <!-- Option selector -->
+  <label for="shampoo-type">Type:</label>
+  <select id="shampoo-type" onchange="updateShampooPrice()">
+    <option value="small">Small Shampoo - Rs. 350</option>
+    <option value="large">Large Shampoo - Rs. 650</option>
+  </select>
+
+  <span id="shampoo-price" class="price">Rs. 350</span>
+  <button>Add to Cart</button>
+</div>
+
+
+    <div class="product-card">
+      <img src="images/conditioner.jpg" alt="Herbal Hair Conditioner">
+      <h3>Herbal Hair Conditioner</h3>
+      <p>Hydrate and restore your tresses with our herbal hair conditioner, infused with natural goodness to detangle, soften, and leave your hair silky smooth.</p>
+      <span class="price">Rs. 300</span>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Noor's Nature | All rights reserved</p>
+  </footer>
+
+  <!-- Link JavaScript -->
+  <script src="script.js"></script>
+
+  <script>
+  function updateShampooPrice() {
+    const type = document.getElementById("shampoo-type").value;
+    const priceTag = document.getElementById("shampoo-price");
+
+    if (type === "large") {
+      priceTag.textContent = "Rs. 650";
+    } else {
+      priceTag.textContent = "Rs. 350";
+    }
+  }
+</script>
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+
+  <form class="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div class="social-links">
+    <a href="https://wa.me/923332242724" target="_blank">📱 WhatsApp</a>
+    <a href="https://instagram.com/noors.nature" target="_blank">📷 Instagram</a>
+  </div>
+</section>
+<script>
+  function openLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noor's Nature</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .cart-icon img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 300px;
+      height: 100vh;
+      background: #fff;
+      border-left: 1px solid #ccc;
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      transition: right 0.3s ease;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .cart-panel.open {
+      right: 0;
+    }
+
+    .cart-items div {
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .close-cart {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cart Icon -->
+<div class="cart-icon" onclick="toggleCart()">
+  <img src="images/cart.png" alt="Cart" />
+</div>
+
+<!-- Cart Panel -->
+<div id="cartPanel" class="cart-panel">
+  <span class="close-cart" onclick="toggleCart()">&times;</span>
+  <h2>Your Cart</h2>
+  <div class="cart-items"></div>
+  <p class="cart-total">Total: Rs. 0</p>
+  <a href="checkout.html" class="checkout-button">Checkout</a>
+
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Zoomed review" />
+</div>
+
+<!-- (Rest of your original HTML content remains unchanged) -->
+
+<script>
+  const cart = [];
+
+  function toggleCart() {
+    document.getElementById('cartPanel').classList.toggle('open');
+  }
+
+  function showCartMessage() {
+    const message = document.getElementById("cart-message");
+    message.style.display = "block";
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 2000);
+  }
+
+  function addToCart(productName, price, imgSrc) {
+    cart.push({ name: productName, price, img: imgSrc });
+    updateCartUI();
+    showCartMessage();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+  }
+
+  function updateCartUI() {
+    const cartContainer = document.querySelector('.cart-items');
+    const cartTotal = document.querySelector('.cart-total');
+    cartContainer.innerHTML = '';
+
+    let total = 0;
+    cart.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.classList.add("cart-item");
+
+      const img = document.createElement("img");
+      img.src = item.img;
+      img.alt = item.name;
+
+      const name = document.createElement("span");
+      name.textContent = `${item.name} - Rs. ${item.price}`;
+
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "Remove";
+      removeBtn.style.marginLeft = "auto";
+      removeBtn.onclick = () => removeFromCart(index);
+
+      div.appendChild(img);
+      div.appendChild(name);
+      div.appendChild(removeBtn);
+      cartContainer.appendChild(div);
+
+      total += item.price;
+    });
+
+    cartTotal.textContent = `Total: Rs. ${total}`;
+  }
+
+  function openLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.product-card').forEach(card => {
+      const button = card.querySelector('button');
+      const productName = card.querySelector('h3').textContent;
+      const imgSrc = card.querySelector('img').src;
+      const select = card.querySelector('select');
+
+      button.addEventListener('click', () => {
+        let price;
+        if (select) {
+          price = select.value === 'large' ? 650 : 350;
+        } else {
+          const priceText = card.querySelector('.price').textContent;
+          price = parseInt(priceText.replace('Rs. ', ''));
+        }
+        addToCart(productName, price, imgSrc);
+      });
+
+      if (select && productName.includes("Shampoo")) {
+        select.addEventListener('change', () => {
+          const newPrice = select.value === 'large' ? 650 : 350;
+          card.querySelector('.price').textContent = `Rs. ${newPrice}`;
+        });
+      }
+    });
+  });
+</script>
+
+<!-- Cart Message -->
+<div id="cart-message" class="cart-message">Item added to cart!</div>
+
+<a href="checkout.html" class="checkout-button">Checkout</a>
+<script>
+document.getElementById("checkout-button").addEventListener("click", function() {
+    if (cart.length === 0) {
+        alert("Your cart is empty. Please add items before checkout.");
+        return;
+    }
+
+    let message = "Hello! I would like to place the following order:%0A";
+    cart.forEach(item => {
+        message += `• ${item.name} - Rs.${item.price}%0A`;
+    });
+
+    let total = cart.reduce((sum, item) => sum + item.price, 0);
+    message += `%0ATotal: Rs.${total}`;
+
+    const phoneNumber = "923332242724"; // Your WhatsApp number
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+
+    window.open(whatsappURL, '_blank');
+});
+</script>
+
+
+</body>
+</html>

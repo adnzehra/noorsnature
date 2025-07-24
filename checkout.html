@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noor's Nature Checkout</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f9f9f5;
+            padding: 20px;
+        }
+        .checkout-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #5c7f67;
+            margin-bottom: 20px;
+        }
+        .cart-summary {
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .checkout-form input, .checkout-form textarea, .checkout-form select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        .checkout-button {
+            width: 100%;
+            background: #5c7f67;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+        .checkout-button:hover {
+            background: #4a6753;
+        }
+    </style>
+</head>
+<body>
+
+<div class="checkout-container">
+    <h2>Checkout - Noor's Nature</h2>
+
+    <div class="cart-summary" id="cart-summary">
+        <!-- Cart items will load here -->
+    </div>
+
+    <form id="checkout-form" class="checkout-form">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="tel" id="phone" placeholder="Phone Number" required />
+        <textarea id="address" rows="3" placeholder="Delivery Address" required></textarea>
+        <select id="payment-method" required>
+            <option value="">Select Payment Method</option>
+            <option value="Cash on Delivery">Cash on Delivery</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+        </select>
+        <button type="submit" class="checkout-button">Confirm Order</button>
+    </form>
+</div>
+
+<script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartSummary = document.getElementById('cart-summary');
+
+    function loadCart() {
+        cartSummary.innerHTML = '';
+        let total = 0;
+        cart.forEach(item => {
+            const div = document.createElement('div');
+            div.classList.add('cart-item');
+
+            const img = document.createElement('img');
+            img.src = item.img;
+
+            const name = document.createElement('span');
+            name.textContent = `${item.name} - Rs.${item.price}`;
+
+            div.appendChild(img);
+            div.appendChild(name);
+            cartSummary.appendChild(div);
+
+            total += item.price;
+        });
+
+        const totalDiv = document.createElement('div');
+        totalDiv.classList.add('cart-item');
+        totalDiv.innerHTML = `<strong>Total:</strong> Rs.${total}`;
+        cartSummary.appendChild(totalDiv);
+    }
+
+    loadCart();
+
+    document.getElementById('checkout-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        const paymentMethod = document.getElementById('payment-method').value;
+
+        let message = `New Order - Noor's Nature:%0A`;
+        cart.forEach(item => {
+            message += `• ${item.name} - Rs.${item.price}%0A`;
+        });
+        let total = cart.reduce((sum, item) => sum + item.price, 0);
+        message += `%0ATotal: Rs.${total}%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment Method: ${paymentMethod}`;
+
+        const phoneNumber = "923332242724"; // Noor's Nature WhatsApp
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+        window.open(whatsappURL, '_blank');
+
+        localStorage.removeItem('cart');
+        alert('Thank you! Your order has been sent to Noor\'s Nature.');
+        window.location.href = '/'; // redirect back to home
+    });
+</script>
+
+</body>
+</html>
