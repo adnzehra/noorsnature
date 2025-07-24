@@ -141,5 +141,32 @@
     });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartContainer = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+
+    if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        cartTotal.textContent = "Total: Rs. 0";
+        return;
+    }
+
+    let total = 0;
+    cart.forEach(item => {
+        const div = document.createElement('div');
+        div.textContent = `${item.name} - Rs. ${item.price}`;
+        cartContainer.appendChild(div);
+        total += item.price;
+    });
+    cartTotal.textContent = `Total: Rs. ${total}`;
+});
+</script>
+<h2>Your Cart</h2>
+<div id="cart-items"></div>
+<p id="cart-total">Total: Rs. 0</p>
+
+
 </body>
 </html>
