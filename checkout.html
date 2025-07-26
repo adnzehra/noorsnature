@@ -2,60 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Noor's Nature - Checkout</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Noor's Nature</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    .cart-item { border-bottom: 1px solid #ccc; padding: 5px 0; }
-    #checkout-button { margin-top: 20px; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      background-color: #f9f9f5;
+    }
+    h2 {
+      color: #5c7f67;
+    }
+    .cart-summary, .checkout-form {
+      margin-bottom: 30px;
+    }
+    .product-item {
+      margin-bottom: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #8fb996;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
-<h1>Checkout</h1>
+  <h2>Checkout</h2>
+<div class="checkout-note" style="background: #fff3cd; border: 1px solid #ffeeba; padding: 15px; border-radius: 6px; margin-bottom: 25px; color: #856404;">
+  <strong>Note:</strong> 
+  <ul style="padding-left: 20px; margin-top: 10px;">
+    <li><b>Cash on Delivery is not available.</b> Payments must be made through <b>Bank Transfer</b> or <b>EasyPaisa</b>.</li>
+    <li>Payment Number: <strong>0333 2242724</strong></li>
+    <li><b>Delivery charges</b> will be informed via WhatsApp after placing the order, based on your area.</li>
+  </ul>
+</div>
 
-<h2>Your Cart</h2>
-<div id="cart-items"></div>
-<p id="cart-total">Total: Rs. 0</p>
+  <div class="cart-summary" id="cart-summary"></div>
 
-<button id="checkout-button">Place Order via WhatsApp</button>
+  <div class="checkout-form">
+    <label>Name:</label>
+    <input type="text" id="name" required />
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
+    <label>Address:</label>
+    <textarea id="address" rows="3" required></textarea>
+
+    <label>Phone Number:</label>
+    <input type="tel" id="phone" required />
+
+    <button onclick="placeOrder()">Place Order via WhatsApp</button>
+  </div>
+
+  <script>
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartContainer = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
 
-    if (cart.length === 0) {
-        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
-        cartTotal.textContent = "Total: Rs. 0";
-        return;
-    }
-
+    const summaryContainer = document.getElementById('cart-summary');
     let total = 0;
+    let itemList = "";
+
     cart.forEach(item => {
-        const div = document.createElement('div');
-        div.classList.add('cart-item');
-        div.textContent = `${item.name} - Rs. ${item.price}`;
-        cartContainer.appendChild(div);
-        total += item.price;
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'product-item';
+      itemDiv.textContent = `${item.name} - Rs. ${item.price}`;
+      summaryContainer.appendChild(itemDiv);
+      total += item.price;
+      itemList += `${item.name} - Rs. ${item.price}\n`;
     });
 
-    cartTotal.textContent = `Total: Rs. ${total}`;
+    const totalDiv = document.createElement('div');
+    totalDiv.innerHTML = `<strong>Total: Rs. ${total}</strong>`;
+    summaryContainer.appendChild(totalDiv);
 
-    document.getElementById("checkout-button").addEventListener("click", function() {
-        let message = "Hello! I would like to place the following order:%0A";
-        cart.forEach(item => {
-            message += `• ${item.name} - Rs.${item.price}%0A`;
-        });
-        message += `%0ATotal: Rs.${total}`;
-        const phoneNumber = "923332242724";
-        const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-        window.open(whatsappURL, '_blank');
-    });
-});
-</script>
+    function placeOrder() {
+      const name = document.getElementById('name').value;
+      const address = document.getElementById('address').value;
+      const phone = document.getElementById('phone').value;
 
+      if (!name || !address || !phone) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const message = 
+        `Hello Noor's Nature!\n\nI'd like to place an order:\n\n${itemList}\nTotal: Rs. ${total}\n\nName: ${name}\nAddress: ${address}\nPhone: ${phone}`;
+      
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappNumber = '923332242724'; // Replace with your WhatsApp number
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+    }
+  </script>
 </body>
 </html>
