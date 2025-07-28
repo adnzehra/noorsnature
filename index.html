@@ -225,7 +225,23 @@
     </div>
   </div>
 </section>
+<!-- Customised Section -->
+<section id="haircare">
+  <h2>Customized Products</h2>
 
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="images/soap.jpg" alt="Herbal Soaps"onclick="openLightbox(this)">
+      <h3>Herbal Soaps</h3>
+      <p>Customised according to your skin type and needs</p>
+      <label for="skin-type">Skin Type:</label>
+      <input type="text" id="skin-type" placeholder="e.g. Oily, Dry" />
+      <label for="skin-problems">Skin Problems:</label>
+      <input type="text" id="skin-problems" placeholder="e.g. Acne, Pigmentation" />
+      <span class="price">Rs. 300</span>
+      <button onclick="addToCart('Herbal Soap', 300, 'images/soap.jpg')">Add to Cart</button>
+    </div>
+  </section>
 
   <!-- Placeholder for Products (we'll add real content soon) -->
   <section id="skincare">
