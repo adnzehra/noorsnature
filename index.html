@@ -371,6 +371,17 @@
     document.getElementById('shampoo-price').textContent = `Rs. ${price}`;
   }
 </script>
+  <script>
+  function addCustomSoapToCart() {
+    const skinType = document.getElementById('skin-type').value;
+    const skinProblems = document.getElementById('skin-problems').value;
+
+    const extraInfo = `Skin Type: ${skinType || 'Not provided'}, Skin Problems: ${skinProblems || 'Not provided'}`;
+    const productName = `Herbal Soap (${extraInfo})`;
+
+    addToCart(productName, 300, 'images/soap.jpg');
+  }
+</script>
 <script>
 function addToCart(productName, price, imageSrc) {
   cart.push({ name: productName, price, img: imageSrc });
