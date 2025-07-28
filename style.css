@@ -415,3 +415,11 @@ footer {
 .review-tab:hover {
   background-color: #3e5d48;
 }
+.product-card input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
